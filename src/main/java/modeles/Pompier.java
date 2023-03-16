@@ -11,4 +11,13 @@ package modeles;
  */
 public class Pompier {
     
+    private int id;
+    private String nom;
+    private String prenom;
+    private String dateNaissance;
+    private String numeroBip;
+    
+    
+
+    
 }
