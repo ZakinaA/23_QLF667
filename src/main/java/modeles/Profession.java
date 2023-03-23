@@ -4,6 +4,8 @@
  */
 package modeles;
 
+import java.util.ArrayList;
+
 /**
  *
  * @author noa.hervieu
@@ -13,6 +15,7 @@ public class Profession {
     private String code;
     private String libelle;
     private String ville;
+    private ArrayList<Volontaire> listeVolontaire;
 
     //Constructeur
     public Profession() {
@@ -48,7 +51,12 @@ public class Profession {
     public void setVille(String ville) {
         this.ville = ville;
     }
-    
-    
-    
+
+    public ArrayList<Volontaire> getListeVolontaire() {
+        return listeVolontaire;
+    }
+
+    public void setListeVolontaire(ArrayList<Volontaire> listeVolontaire) {
+        this.listeVolontaire = listeVolontaire;
+    }
 }

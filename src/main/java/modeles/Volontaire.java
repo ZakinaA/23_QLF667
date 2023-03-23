@@ -10,24 +10,38 @@ package modeles;
  */
 public class Volontaire extends Pompier{
     
-    private Boolean enActivite;
+    private boolean enActivite;
+    private Profession profession;
     
     //Constructeur
     public Volontaire(){
         super();
     }
-    
-    public Volontaire(Boolean enActivite) {
+
+    public Volontaire(boolean enActivite, Profession profession) {
         super();
         this.enActivite = enActivite;
+        this.profession = profession;
     }
-    
-    //GETTER & SETTER
-    public Boolean getEnActivite() {
+
+    public boolean isEnActivite() {
         return enActivite;
     }
 
-    public void setEnActivite(Boolean enActivite) {
+    public void setEnActivite(boolean enActivite) {
         this.enActivite = enActivite;
     }
+
+    public Profession getProfession() {
+        return profession;
+    }
+
+    public void setProfession(Profession profession) {
+        this.profession = profession;
+    }
+    
+    
+   
+    
+    
 }
