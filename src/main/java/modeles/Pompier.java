@@ -9,7 +9,7 @@ package modeles;
  *
  * @author noa.hervieu
  */
-public class Pompier {
+public abstract class Pompier {
     
     private int id;
     private String nom;
