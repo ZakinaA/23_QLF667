@@ -4,6 +4,8 @@
  */
 package modeles;
 
+import java.util.ArrayList;
+
 /**
  *
  * @author noa.hervieu
@@ -12,6 +14,7 @@ public class Grade {
     
     private String code;
     private String libelle;
+    private ArrayList<Pompier> listePompier;
 
     
     //Constructeur
@@ -39,7 +42,14 @@ public class Grade {
     public void setLibelle(String libelle) {
         this.libelle = libelle;
     }
+
+    public ArrayList<Pompier> getListePompier() {
+        return listePompier;
+    }
+
+    public void setListePompier(ArrayList<Pompier> listePompier) {
+        this.listePompier = listePompier;
+    }
     
-    
-    
+   
 }
