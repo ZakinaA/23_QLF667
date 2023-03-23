@@ -14,7 +14,6 @@ public class Professionnel extends Pompier{
     private String dateObtention;
 
     //Constructeur
-
     public Professionnel() {
         super();
     }
