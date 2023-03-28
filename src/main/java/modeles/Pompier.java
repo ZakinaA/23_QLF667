@@ -16,6 +16,7 @@ public abstract class Pompier {
     private String prenom;
     private String dateNaissance;
     private int numeroBip;
+    private Grade grade;
     
     
     public Pompier(){}
@@ -68,6 +69,14 @@ public abstract class Pompier {
 
     public void setNumeroBip(int numeroBip) {
         this.numeroBip = numeroBip;
+    }
+
+    public Grade getGrade() {
+        return grade;
+    }
+
+    public void setGrade(Grade grade) {
+        this.grade = grade;
     }
     
 }

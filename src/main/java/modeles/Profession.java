@@ -59,4 +59,11 @@ public class Profession {
     public void setListeVolontaire(ArrayList<Volontaire> listeVolontaire) {
         this.listeVolontaire = listeVolontaire;
     }
+    
+    public void addUnVolontaire(Volontaire pUnVolontaire) {
+            if (listeVolontaire == null) { // Si la liste n'est pas existante on en crée une
+                    listeVolontaire = new ArrayList<Volontaire>();
+            } // Et on ajoute le Volontaire à la liste
+            listeVolontaire.add(pUnVolontaire);
+    }
 }

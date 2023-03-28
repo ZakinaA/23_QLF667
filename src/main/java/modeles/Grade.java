@@ -52,10 +52,10 @@ public class Grade {
     }
     
     public void addUnPompier(Pompier pUnPompier) {
-            if (listePompier == null) { // Si la liste n'est pas existante on en crée une
-                    listePompier = new ArrayList<Pompier>();
-            } // Et on ajoute le salarier à la liste
-            listePompier.add(pUnPompier);
+        if (listePompier == null) { // Si la liste n'est pas existante on en crée une
+                listePompier = new ArrayList<Pompier>();
+        } // Et on ajoute le pompier à la liste
+        listePompier.add(pUnPompier);
     }
    
 }
