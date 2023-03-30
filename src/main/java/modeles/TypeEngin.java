@@ -14,7 +14,7 @@ import java.util.ArrayList;
 public class TypeEngin {
     private String code;
     private String libelle;
-    private ArrayList listEngin;
+    private Engin engin;
     
     public TypeEngin(String code, String libelle) {
         this.code = code;
@@ -40,18 +40,12 @@ public class TypeEngin {
         this.libelle = libelle;
     }
 
-    public ArrayList getListEngin() {
-        return listEngin;
+    public Engin getEngin() {
+        return engin;
     }
 
-    public void setListEngin(ArrayList listEngin) {
-        this.listEngin = listEngin;
+    public void setEngin(Engin engin) {
+        this.engin = engin;
     }
-    
-    public void addUnEngin(Engin pUnEngin){
-        if (listEngin==null){
-            listEngin=new ArrayList<Engin>(); 
-        }
-        listEngin.add(pUnEngin);
-    }
+
 }
