@@ -15,6 +15,8 @@ public class Situation {
     private String libelle;
     private ArrayList listEngin ; 
     private ArrayList listIntervention ;
+    private Engin engin ;
+    private Intervention intervention ;
     
     public Situation() {
     }
@@ -55,7 +57,30 @@ public class Situation {
     public void setListIntetvention(ArrayList listIntetvention) {
         this.listIntervention = listIntetvention;
     }
-    
+
+    public ArrayList getListIntervention() {
+        return listIntervention;
+    }
+
+    public void setListIntervention(ArrayList listIntervention) {
+        this.listIntervention = listIntervention;
+    }
+
+    public Engin getEngin() {
+        return engin;
+    }
+
+    public void setEngin(Engin engin) {
+        this.engin = engin;
+    }
+
+    public Intervention getIntervention() {
+        return intervention;
+    }
+
+    public void setIntervention(Intervention intervention) {
+        this.intervention = intervention;
+    }
     
     public void addUnEngin(Engin pUnEngin){
         if (listEngin==null){

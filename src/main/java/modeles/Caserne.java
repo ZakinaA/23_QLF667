@@ -16,6 +16,8 @@ public class Caserne {
     private String ville;
     private String cp;
     private ArrayList listEngins;
+    private Pompier pompier ;
+    
     public Caserne() {
     }
 
@@ -73,6 +75,14 @@ public class Caserne {
 
     public void setListEngins(ArrayList listEngins) {
         this.listEngins = listEngins;
+    }
+
+    public Pompier getPompier() {
+        return pompier;
+    }
+
+    public void setPompier(Pompier pompier) {
+        this.pompier = pompier;
     }
     
     public void addUnEngin(Engin pUnEngin){

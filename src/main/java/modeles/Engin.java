@@ -13,7 +13,11 @@ import java.util.ArrayList;
 public class Engin {
     private int id ;
     private String libelle ;
+    private ArrayList listTypeEngin ;
     private ArrayList listSituations;
+    private Caserne caserne;
+    private Situation situation;
+    
     public Engin() {
     }
 
@@ -47,11 +51,34 @@ public class Engin {
     public void setListSituations(ArrayList listSituation) {
         this.listSituations = listSituation;
     }
+
+    public Caserne getCaserne() {
+        return caserne;
+    }
+
+    public void setCaserne(Caserne caserne) {
+        this.caserne = caserne;
+    }
+
+    public Situation getSituation() {
+        return situation;
+    }
+
+    public void setSituation(Situation situation) {
+        this.situation = situation;
+    }
     
     public void addUneSituation(Situation pUneSituation){
         if (listSituations==null){
             listSituations=new ArrayList<Situation>(); 
         }
         listSituations.add(pUneSituation);
+    }
+    
+     public void addUnTypeEngin(TypeEngin pUnTypeEngin){
+        if (listTypeEngin==null){
+            listTypeEngin=new ArrayList<TypeEngin>(); 
+        }
+        listTypeEngin.add(pUnTypeEngin);
     }
 }
