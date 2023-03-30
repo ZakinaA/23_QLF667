@@ -20,6 +20,8 @@ public abstract class Pompier {
     private int numeroBip;
     private Grade grade;
     private ArrayList<Fonction> listeFonction;
+    private ArrayList<Caserne> listeCaserne;
+    private ArrayList<Intervention> listeIntervention;
     
     
     public Pompier(){}
@@ -82,12 +84,28 @@ public abstract class Pompier {
         this.grade = grade;
     }
 
-    public ArrayList<Fonction> getFonction() {
+    public ArrayList<Fonction> getListeFonction() {
         return listeFonction;
     }
 
-    public void setFonction(ArrayList<Fonction> fonction) {
-        this.listeFonction = fonction;
+    public void setListeFonction(ArrayList<Fonction> listeFonction) {
+        this.listeFonction = listeFonction;
+    }
+
+    public ArrayList<Caserne> getListeCaserne() {
+        return listeCaserne;
+    }
+
+    public void setListeCaserne(ArrayList<Caserne> listeCaserne) {
+        this.listeCaserne = listeCaserne;
+    }
+
+    public ArrayList<Intervention> getListeIntervention() {
+        return listeIntervention;
+    }
+
+    public void setListeIntervention(ArrayList<Intervention> listeIntervention) {
+        this.listeIntervention = listeIntervention;
     }
     
     public void addUneFonction(Fonction uneFonction) {
@@ -95,6 +113,20 @@ public abstract class Pompier {
                 listeFonction = new ArrayList<Fonction>();
         } // Et on ajoute le pompier à la liste
         listeFonction.add(uneFonction);
+    }
+    
+    public void addUneCaserne(Caserne uneCaserne) {
+        if (listeCaserne == null) { // Si la liste n'est pas existante on en crée une
+                listeCaserne = new ArrayList<Caserne>();
+        } // Et on ajoute le pompier à la liste
+        listeCaserne.add(uneCaserne);
+    }
+    
+    public void addUneFonction(Intervention uneIntervention) {
+        if (listeIntervention == null) { // Si la liste n'est pas existante on en crée une
+                listeIntervention = new ArrayList<Intervention>();
+        } // Et on ajoute le pompier à la liste
+        listeIntervention.add(uneIntervention);
     }
     
 }
