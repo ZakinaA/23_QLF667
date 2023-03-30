@@ -5,6 +5,8 @@
  */
 package modeles;
 
+import java.util.ArrayList;
+
 /**
  *
  * @author louane.roussel
@@ -12,7 +14,8 @@ package modeles;
 public class TypeEngin {
     private String code;
     private String libelle;
-
+    private ArrayList listEngin;
+    
     public TypeEngin(String code, String libelle) {
         this.code = code;
         this.libelle = libelle;
@@ -36,6 +39,19 @@ public class TypeEngin {
     public void setLibelle(String libelle) {
         this.libelle = libelle;
     }
-    
 
+    public ArrayList getListEngin() {
+        return listEngin;
+    }
+
+    public void setListEngin(ArrayList listEngin) {
+        this.listEngin = listEngin;
+    }
+    
+    public void addUnEngin(Engin pUnEngin){
+        if (listEngin==null){
+            listEngin=new ArrayList<Engin>(); 
+        }
+        listEngin.add(pUnEngin);
+    }
 }

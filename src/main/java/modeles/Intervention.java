@@ -4,6 +4,7 @@
  * and open the template in the editor.
  */
 package modeles;
+import java.util.ArrayList;
 
 /**
  *
@@ -16,7 +17,8 @@ public class Intervention {
     private String lieu;
     private String heureArrive;
     private String duree;
-
+    private ArrayList listSituation;
+            
     public Intervention() {
     }
 
@@ -76,6 +78,20 @@ public class Intervention {
     public void setDuree(String duree) {
         this.duree = duree;
     }
+
+    public ArrayList getListSituation() {
+        return listSituation;
+    }
+
+    public void setListSituation(ArrayList listSituation) {
+        this.listSituation = listSituation;
+    }
     
+     public void addUneSituation(Situation pUneSituation){
+        if (listSituation==null){
+            listSituation=new ArrayList<Situation>(); 
+        }
+        listSituation.add(pUneSituation);
+    }
     
 }

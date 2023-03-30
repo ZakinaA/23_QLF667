@@ -4,6 +4,7 @@
  * and open the template in the editor.
  */
 package modeles;
+import java.util.ArrayList;
 
 /**
  *
@@ -12,8 +13,18 @@ package modeles;
 public class Situation {
     private int id;
     private String libelle;
-
+    private ArrayList listEngin ; 
+    private ArrayList listIntervention ;
+    
     public Situation() {
+    }
+
+    public ArrayList getListEngin() {
+        return listEngin;
+    }
+
+    public void setListEngin(ArrayList listEngin) {
+        this.listEngin = listEngin;
     }
 
     public Situation(int id, String libelle) {
@@ -36,5 +47,27 @@ public class Situation {
     public void setLibelle(String libelle) {
         this.libelle = libelle;
     }
+
+    public ArrayList getListIntetvention() {
+        return listIntervention;
+    }
+
+    public void setListIntetvention(ArrayList listIntetvention) {
+        this.listIntervention = listIntetvention;
+    }
     
+    
+    public void addUnEngin(Engin pUnEngin){
+        if (listEngin==null){
+            listEngin=new ArrayList<Engin>(); 
+        }
+        listEngin.add(pUnEngin);
+    }
+    
+    public void addUneIntervention(Intervention pUneIntervention){
+        if (listIntervention==null){
+            listIntervention=new ArrayList<Intervention>(); 
+        }
+        listIntervention.add(pUneIntervention);
+    }
 }
