@@ -19,6 +19,8 @@ public class Intervention {
     private String duree;
     private ArrayList listSituation;
     private Situation situation ;        
+    private ArrayList listPompier ;
+    
     public Intervention() {
     }
 
@@ -94,6 +96,14 @@ public class Intervention {
     public void setSituation(Situation situation) {
         this.situation = situation;
     }
+
+    public ArrayList getListPompier() {
+        return listPompier;
+    }
+
+    public void setListPompier(ArrayList listPompier) {
+        this.listPompier = listPompier;
+    }
     
     public void addUneSituation(Situation pUneSituation){
         if (listSituation==null){
@@ -102,4 +112,10 @@ public class Intervention {
         listSituation.add(pUneSituation);
     }
     
+     public void addUnPompier(Pompier pUnPompier){
+        if (listPompier==null){
+            listPompier=new ArrayList<Pompier>(); 
+        }
+        listPompier.add(pUnPompier);
+    }
 }
