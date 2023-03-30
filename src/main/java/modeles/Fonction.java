@@ -4,6 +4,8 @@
  */
 package modeles;
 
+import java.util.ArrayList;
+
 /**
  *
  * @author noa.hervieu
@@ -12,6 +14,7 @@ public class Fonction {
     
     private String code;
     private String libelle;
+    private ArrayList<Pompier> listePompier;
 
     
     //Constructeur
@@ -40,7 +43,20 @@ public class Fonction {
         this.libelle = libelle;
     }
 
-    
+    public ArrayList<Pompier> getListePompier() {
+        return listePompier;
+    }
+
+    public void setListePompier(ArrayList<Pompier> listePompier) {
+        this.listePompier = listePompier;
+    }
+
+    public void addUnPompier(Pompier pUnPompier) {
+        if (listePompier == null) { // Si la liste n'est pas existante on en crée une
+                listePompier = new ArrayList<Pompier>();
+        } // Et on ajoute le pompier à la liste
+        listePompier.add(pUnPompier);
+    }
     
     
 }

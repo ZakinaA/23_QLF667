@@ -5,6 +5,8 @@
  */
 package modeles;
 
+import java.util.ArrayList;
+
 /**
  *
  * @author noa.hervieu
@@ -17,6 +19,7 @@ public abstract class Pompier {
     private String dateNaissance;
     private int numeroBip;
     private Grade grade;
+    private ArrayList<Fonction> listeFonction;
     
     
     public Pompier(){}
@@ -77,6 +80,21 @@ public abstract class Pompier {
 
     public void setGrade(Grade grade) {
         this.grade = grade;
+    }
+
+    public ArrayList<Fonction> getFonction() {
+        return listeFonction;
+    }
+
+    public void setFonction(ArrayList<Fonction> fonction) {
+        this.listeFonction = fonction;
+    }
+    
+    public void addUneFonction(Fonction uneFonction) {
+        if (listeFonction == null) { // Si la liste n'est pas existante on en crée une
+                listeFonction = new ArrayList<Fonction>();
+        } // Et on ajoute le pompier à la liste
+        listeFonction.add(uneFonction);
     }
     
 }
