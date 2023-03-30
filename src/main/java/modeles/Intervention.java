@@ -18,7 +18,7 @@ public class Intervention {
     private String heureArrive;
     private String duree;
     private ArrayList listSituation;
-            
+    private Situation situation ;        
     public Intervention() {
     }
 
@@ -86,8 +86,16 @@ public class Intervention {
     public void setListSituation(ArrayList listSituation) {
         this.listSituation = listSituation;
     }
+
+    public Situation getSituation() {
+        return situation;
+    }
+
+    public void setSituation(Situation situation) {
+        this.situation = situation;
+    }
     
-     public void addUneSituation(Situation pUneSituation){
+    public void addUneSituation(Situation pUneSituation){
         if (listSituation==null){
             listSituation=new ArrayList<Situation>(); 
         }
