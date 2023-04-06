@@ -80,8 +80,9 @@ public class frm_connexion extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButtonSubmitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSubmitActionPerformed
-        if (connexionUserDao.connexionUser(connection, jtextUsername.getText(), jtextPassword.getPassword())){
+        if (connexionUserDao.connexionUser(connection, jtextUsername.getText(), new String(jtextPassword.getPassword()))){
             System.out.println("oui");
+            
         }else{
             System.out.println("non");
         }
