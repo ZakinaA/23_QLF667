@@ -42,6 +42,11 @@ public class frm_inscriptionV extends javax.swing.JFrame {
         });
 
         suivant.setText("suivant");
+        suivant.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                suivantActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -78,6 +83,17 @@ public class frm_inscriptionV extends javax.swing.JFrame {
     private void EnAtiviteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EnAtiviteActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_EnAtiviteActionPerformed
+
+    private void suivantActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_suivantActionPerformed
+        // TODO add your handling code here:
+         if (EnAtivite.isSelected()){
+            setVisible(false);
+            frm_inscriptionV2 frm_inscriptionV2 = new frm_inscriptionV2();
+            frm_inscriptionV2.setVisible(true);
+         }else{
+             
+         }
+    }//GEN-LAST:event_suivantActionPerformed
 
     /**
      * @param args the command line arguments

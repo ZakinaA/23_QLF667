@@ -148,6 +148,20 @@ public class frm_inscription extends javax.swing.JFrame {
 
     private void suivantActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_suivantActionPerformed
         // TODO add your handling code here:
+        
+        if (jComboBox1.getSelectedItem().toString().equals("volontaire")) {
+           setVisible(false);
+           frm_inscriptionV frm_inscriptionV = new frm_inscriptionV();
+           frm_inscriptionV.setVisible(true);
+        
+        }else if (jComboBox1.getSelectedItem().toString().equals("professionnel")) {
+           setVisible(false); 
+           frm_inscriptionP frm_inscriptionP = new frm_inscriptionP();
+           frm_inscriptionP.setVisible(true);
+        
+        }else {
+            System.out.println("ERROR");
+        }
     }//GEN-LAST:event_suivantActionPerformed
 
     /**
