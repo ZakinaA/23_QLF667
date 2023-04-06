@@ -103,6 +103,8 @@ public class frm_inscriptionP extends javax.swing.JFrame {
 
     private void suivantActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_suivantActionPerformed
         // TODO add your handling code here:
+        String vIndiceTraitement = indiceTraitement.getText();
+        String vDateOptentionIndice = DateOptentionIndice.getText();
     }//GEN-LAST:event_suivantActionPerformed
 
     /**

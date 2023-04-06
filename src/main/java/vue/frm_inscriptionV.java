@@ -86,12 +86,14 @@ public class frm_inscriptionV extends javax.swing.JFrame {
 
     private void suivantActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_suivantActionPerformed
         // TODO add your handling code here:
-         if (EnAtivite.isSelected()){
+         
+        if (EnAtivite.isSelected()){
+            boolean vEnAtivite = true ;
             setVisible(false);
             frm_inscriptionV2 frm_inscriptionV2 = new frm_inscriptionV2();
             frm_inscriptionV2.setVisible(true);
          }else{
-             
+           boolean vEnAtivite = false ;   
          }
     }//GEN-LAST:event_suivantActionPerformed
 

@@ -148,6 +148,10 @@ public class frm_inscription extends javax.swing.JFrame {
 
     private void suivantActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_suivantActionPerformed
         // TODO add your handling code here:
+        String vNom = Nom.getText();
+        String vPrenom = Prenom.getText();
+        String vDateNaissance = DateNaissance.getText();
+        String vNumeroBip = NumeroBip.getText(); 
         
         if (jComboBox1.getSelectedItem().toString().equals("volontaire")) {
            setVisible(false);

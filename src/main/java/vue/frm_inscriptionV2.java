@@ -28,7 +28,7 @@ public class frm_inscriptionV2 extends javax.swing.JFrame {
 
         jLabel1 = new javax.swing.JLabel();
         valider = new javax.swing.JButton();
-        Nom = new javax.swing.JTextField();
+        nomPro = new javax.swing.JTextField();
         Ville = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -42,7 +42,12 @@ public class frm_inscriptionV2 extends javax.swing.JFrame {
             }
         });
 
-        Nom.setText("Nom de la profession");
+        nomPro.setText("Nom de la profession");
+        nomPro.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                nomProActionPerformed(evt);
+            }
+        });
 
         Ville.setText("Ville");
 
@@ -56,7 +61,7 @@ public class frm_inscriptionV2 extends javax.swing.JFrame {
                         .addGap(118, 118, 118)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(Ville, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(Nom, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(nomPro, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(155, 155, 155)
                         .addComponent(valider))
@@ -71,7 +76,7 @@ public class frm_inscriptionV2 extends javax.swing.JFrame {
                 .addGap(30, 30, 30)
                 .addComponent(jLabel1)
                 .addGap(18, 18, 18)
-                .addComponent(Nom, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(nomPro, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(Ville, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
@@ -84,7 +89,14 @@ public class frm_inscriptionV2 extends javax.swing.JFrame {
 
     private void validerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_validerActionPerformed
         // TODO add your handling code here:
+        String vnomPro = nomPro.getText();
+        String vVille = Ville.getText();
+
     }//GEN-LAST:event_validerActionPerformed
+
+    private void nomProActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nomProActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_nomProActionPerformed
 
     /**
      * @param args the command line arguments
@@ -125,9 +137,9 @@ public class frm_inscriptionV2 extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JTextField Nom;
     private javax.swing.JTextField Ville;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JTextField nomPro;
     private javax.swing.JButton valider;
     // End of variables declaration//GEN-END:variables
 }
