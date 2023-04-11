@@ -7,7 +7,10 @@ package vue;
 
 import DAO.InitConnexion;
 import DAO.PompierDAO;
+import static java.lang.String.valueOf;
 import java.sql.Connection;
+import java.util.ArrayList;
+import javax.swing.DefaultListModel;
 import modeles.Pompier;
 import modeles.Professionnel;
 
@@ -38,6 +41,43 @@ public class frm_pompier extends javax.swing.JFrame {
         Txt_Naissance.setText(naissance);
         Txt_bip.setText(bip);
         
+        /*Remplissage de la liste des pompier en responsabilité*/
+        
+        ArrayList<Professionnel> lesPompierResponsable = PompierDAO.getPompierResponsabilite(connection, currentPompier.getId());
+        
+        DefaultListModel<String> listid = new DefaultListModel<String>();
+        for (int i = 0; i < lesPompierResponsable.size(); i++) {
+            listid.addElement(valueOf(lesPompierResponsable.get(i).getId()));
+        }
+        
+        DefaultListModel<String> listNom = new DefaultListModel<String>();
+        for (int i = 0; i < lesPompierResponsable.size(); i++) {
+            listid.addElement(lesPompierResponsable.get(i).getNom());
+        }
+        
+        DefaultListModel<String> listPrenom = new DefaultListModel<String>();
+        for (int i = 0; i < lesPompierResponsable.size(); i++) {
+            listid.addElement(lesPompierResponsable.get(i).getPrenom());
+        }
+        
+        DefaultListModel<String> listBip = new DefaultListModel<String>();
+        for (int i = 0; i < lesPompierResponsable.size(); i++) {
+            listid.addElement(lesPompierResponsable.get(i).getNumeroBip());
+        }
+        
+        
+        jList_PompierId.setModel(listid);
+        jList_PompierId.setVisible(true);
+        
+        jList_PompierNom.setModel(listNom);
+        jList_PompierNom.setVisible(true);
+        
+        jList_PompierPrenom.setModel(listPrenom);
+        jList_PompierPrenom.setVisible(true);
+        
+        jList_PompierBip.setModel(listBip);
+        jList_PompierBip.setVisible(true);
+        
     }
 
     /**
@@ -59,6 +99,15 @@ public class frm_pompier extends javax.swing.JFrame {
         Lab_bip = new javax.swing.JLabel();
         Txt_Naissance = new javax.swing.JTextField();
         jPanel2 = new javax.swing.JPanel();
+        jLabel1 = new javax.swing.JLabel();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        jList_PompierId = new javax.swing.JList<>();
+        jScrollPane3 = new javax.swing.JScrollPane();
+        jList_PompierNom = new javax.swing.JList<>();
+        jScrollPane4 = new javax.swing.JScrollPane();
+        jList_PompierPrenom = new javax.swing.JList<>();
+        jScrollPane5 = new javax.swing.JScrollPane();
+        jList_PompierBip = new javax.swing.JList<>();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -117,6 +166,36 @@ public class frm_pompier extends javax.swing.JFrame {
             .addGap(0, 0, Short.MAX_VALUE)
         );
 
+        jLabel1.setText("Vous êtes responsable de :");
+
+        jList_PompierId.setModel(new javax.swing.AbstractListModel<String>() {
+            String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
+            public int getSize() { return strings.length; }
+            public String getElementAt(int i) { return strings[i]; }
+        });
+        jScrollPane2.setViewportView(jList_PompierId);
+
+        jList_PompierNom.setModel(new javax.swing.AbstractListModel<String>() {
+            String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
+            public int getSize() { return strings.length; }
+            public String getElementAt(int i) { return strings[i]; }
+        });
+        jScrollPane3.setViewportView(jList_PompierNom);
+
+        jList_PompierPrenom.setModel(new javax.swing.AbstractListModel<String>() {
+            String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
+            public int getSize() { return strings.length; }
+            public String getElementAt(int i) { return strings[i]; }
+        });
+        jScrollPane4.setViewportView(jList_PompierPrenom);
+
+        jList_PompierBip.setModel(new javax.swing.AbstractListModel<String>() {
+            String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
+            public int getSize() { return strings.length; }
+            public String getElementAt(int i) { return strings[i]; }
+        });
+        jScrollPane5.setViewportView(jList_PompierBip);
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -135,31 +214,52 @@ public class frm_pompier extends javax.swing.JFrame {
                     .addComponent(Lab_Naissance))
                 .addGap(37, 37, 37)
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(280, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel1)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jPanel2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(lab_bonjour)
-                .addGap(18, 18, 18)
-                .addComponent(Lab_Prenom)
-                .addGap(5, 5, 5)
-                .addComponent(Txt_prenom, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(10, 10, 10)
-                .addComponent(Lab_nom)
-                .addGap(5, 5, 5)
-                .addComponent(Txt_nom, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(10, 10, 10)
-                .addComponent(Lab_Naissance)
-                .addGap(5, 5, 5)
-                .addComponent(Txt_Naissance, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(10, 10, 10)
-                .addComponent(Lab_bip)
-                .addGap(5, 5, 5)
-                .addComponent(Txt_bip, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(lab_bonjour)
+                        .addGap(18, 18, 18)
+                        .addComponent(Lab_Prenom)
+                        .addGap(5, 5, 5)
+                        .addComponent(Txt_prenom, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(10, 10, 10)
+                        .addComponent(Lab_nom)
+                        .addGap(5, 5, 5)
+                        .addComponent(Txt_nom, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(10, 10, 10)
+                        .addComponent(Lab_Naissance)
+                        .addGap(5, 5, 5)
+                        .addComponent(Txt_Naissance, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(10, 10, 10)
+                        .addComponent(Lab_bip)
+                        .addGap(5, 5, 5)
+                        .addComponent(Txt_bip, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jLabel1)
+                        .addGap(18, 18, 18)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addContainerGap(47, Short.MAX_VALUE))
-            .addComponent(jPanel2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         pack();
@@ -231,7 +331,16 @@ public class frm_pompier extends javax.swing.JFrame {
     private javax.swing.JTextField Txt_bip;
     private javax.swing.JTextField Txt_nom;
     private javax.swing.JTextField Txt_prenom;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JList<String> jList_PompierBip;
+    private javax.swing.JList<String> jList_PompierId;
+    private javax.swing.JList<String> jList_PompierNom;
+    private javax.swing.JList<String> jList_PompierPrenom;
     private javax.swing.JPanel jPanel2;
+    private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JScrollPane jScrollPane3;
+    private javax.swing.JScrollPane jScrollPane4;
+    private javax.swing.JScrollPane jScrollPane5;
     private javax.swing.JLabel lab_bonjour;
     // End of variables declaration//GEN-END:variables
 
