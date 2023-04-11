@@ -40,5 +40,9 @@ public class Responsable extends Utilisateur {
      pompiers.setPoste(poste);         
     }
     
+    public void modifierPompiers(Utilisateur pompiers, String nom, String prenom, String poste){
+     pompiers.setNom(nom);
+     pompiers.setPrenom(prenom);
+     pompiers.setPoste(poste);
 }
 
