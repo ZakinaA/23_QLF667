@@ -36,6 +36,8 @@ public class PompierDAO {
              unProfessionnel.setDateObtention(rs.getString("PROF_DATEOBTENTIONINDICE"));
              unProfessionnel.setNom(rs.getString("PROF_NOM"));
              unProfessionnel.setPrenom(rs.getString("PROF_PRENOM"));
+             unProfessionnel.setNumeroBip(rs.getString("PROF_NUMEROBIP"));
+             unProfessionnel.setDateNaissance(rs.getString("PROF_DATENAISSANCE"));
 
          }
          InitConnexion.fermerConnexion(rs);

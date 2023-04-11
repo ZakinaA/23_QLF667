@@ -8,6 +8,7 @@ package vue;
 import DAO.InitConnexion;
 import DAO.PompierDAO;
 import java.sql.Connection;
+import modeles.Pompier;
 import modeles.Professionnel;
 
 /**
@@ -19,20 +20,23 @@ public class frm_pompier extends javax.swing.JFrame {
     /**
      * Creates new form frm_pompier
      */
-    public frm_pompier() {
+    public frm_pompier(Pompier currentPompier) {
         
         initComponents();
         Connection connection = InitConnexion.ouvrirConnexion();
         
-        Professionnel professionnelByMatricule = PompierDAO.getProfessionnelByMatricule(connection, 3);
-        
-        String prenom = professionnelByMatricule.getPrenom();
-        String nom = professionnelByMatricule.getNom();
+        String prenom = currentPompier.getPrenom();
+        String nom = currentPompier.getNom();
+        String naissance = currentPompier.getDateNaissance();
+        String bip = currentPompier.getNumeroBip();
+
         
         lab_bonjour.setText("Bonjour, " + prenom);
         
         Txt_prenom.setText(prenom);
         Txt_nom.setText(nom);
+        Txt_Naissance.setText(naissance);
+        Txt_bip.setText(bip);
         
     }
 
@@ -50,11 +54,17 @@ public class frm_pompier extends javax.swing.JFrame {
         Lab_Prenom = new javax.swing.JLabel();
         Txt_nom = new javax.swing.JTextField();
         Lab_nom = new javax.swing.JLabel();
+        Lab_Naissance = new javax.swing.JLabel();
+        Txt_bip = new javax.swing.JTextField();
+        Lab_bip = new javax.swing.JLabel();
+        Txt_Naissance = new javax.swing.JTextField();
+        jPanel2 = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         lab_bonjour.setText("jLabel1");
 
+        Txt_prenom.setEditable(false);
         Txt_prenom.setText("jTextField1");
         Txt_prenom.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -64,6 +74,7 @@ public class frm_pompier extends javax.swing.JFrame {
 
         Lab_Prenom.setText("Prénom : ");
 
+        Txt_nom.setEditable(false);
         Txt_nom.setText("jTextField1");
         Txt_nom.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -73,42 +84,82 @@ public class frm_pompier extends javax.swing.JFrame {
 
         Lab_nom.setText("Nom : ");
 
+        Lab_Naissance.setText("Naissance :");
+
+        Txt_bip.setEditable(false);
+        Txt_bip.setText("jTextField1");
+        Txt_bip.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                Txt_bipActionPerformed(evt);
+            }
+        });
+
+        Lab_bip.setText("BIP : ");
+
+        Txt_Naissance.setEditable(false);
+        Txt_Naissance.setText("jTextField1");
+        Txt_Naissance.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                Txt_NaissanceActionPerformed(evt);
+            }
+        });
+
+        jPanel2.setBackground(new java.awt.Color(0, 0, 0));
+
+        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
+        jPanel2.setLayout(jPanel2Layout);
+        jPanel2Layout.setHorizontalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 8, Short.MAX_VALUE)
+        );
+        jPanel2Layout.setVerticalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 0, Short.MAX_VALUE)
+        );
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(lab_bonjour))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(33, 33, 33)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(Lab_nom)
-                                .addGap(33, 33, 33)
-                                .addComponent(Txt_nom, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(Lab_Prenom)
-                                .addGap(18, 18, 18)
-                                .addComponent(Txt_prenom, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                .addContainerGap(245, Short.MAX_VALUE))
+                    .addComponent(lab_bonjour)
+                    .addComponent(Lab_Prenom)
+                    .addComponent(Txt_bip, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(Lab_bip)
+                    .addComponent(Txt_Naissance, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(Lab_nom)
+                    .addComponent(Txt_nom, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(Txt_prenom, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(Lab_Naissance))
+                .addGap(37, 37, 37)
+                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(280, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(lab_bonjour)
-                .addGap(52, 52, 52)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(Txt_prenom, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(Lab_Prenom))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(Txt_nom, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(Lab_nom))
-                .addContainerGap(174, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
+                .addComponent(Lab_Prenom)
+                .addGap(5, 5, 5)
+                .addComponent(Txt_prenom, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(10, 10, 10)
+                .addComponent(Lab_nom)
+                .addGap(5, 5, 5)
+                .addComponent(Txt_nom, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(10, 10, 10)
+                .addComponent(Lab_Naissance)
+                .addGap(5, 5, 5)
+                .addComponent(Txt_Naissance, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(10, 10, 10)
+                .addComponent(Lab_bip)
+                .addGap(5, 5, 5)
+                .addComponent(Txt_bip, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(47, Short.MAX_VALUE))
+            .addComponent(jPanel2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         pack();
@@ -121,6 +172,14 @@ public class frm_pompier extends javax.swing.JFrame {
     private void Txt_nomActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Txt_nomActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_Txt_nomActionPerformed
+
+    private void Txt_bipActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Txt_bipActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_Txt_bipActionPerformed
+
+    private void Txt_NaissanceActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Txt_NaissanceActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_Txt_NaissanceActionPerformed
 
     /**
      * @param args the command line arguments
@@ -152,7 +211,7 @@ public class frm_pompier extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new frm_pompier().setVisible(true);
+                new frm_pompier(null).setVisible(true);
             }
         });
         
@@ -164,10 +223,15 @@ public class frm_pompier extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel Lab_Naissance;
     private javax.swing.JLabel Lab_Prenom;
+    private javax.swing.JLabel Lab_bip;
     private javax.swing.JLabel Lab_nom;
+    private javax.swing.JTextField Txt_Naissance;
+    private javax.swing.JTextField Txt_bip;
     private javax.swing.JTextField Txt_nom;
     private javax.swing.JTextField Txt_prenom;
+    private javax.swing.JPanel jPanel2;
     private javax.swing.JLabel lab_bonjour;
     // End of variables declaration//GEN-END:variables
 
