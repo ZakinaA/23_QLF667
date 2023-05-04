@@ -13,9 +13,12 @@ public class frm_inscription extends javax.swing.JFrame {
     /**
      * Creates new form frm_inscription
      */
+    
     public frm_inscription() {
         initComponents();
     }
+
+   
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -155,12 +158,12 @@ public class frm_inscription extends javax.swing.JFrame {
         
         if (jComboBox1.getSelectedItem().toString().equals("volontaire")) {
            setVisible(false);
-           frm_inscriptionV frm_inscriptionV = new frm_inscriptionV();
+           frm_inscriptionV frm_inscriptionV = new frm_inscriptionV(vNom, vPrenom, vDateNaissance, vNumeroBip);
            frm_inscriptionV.setVisible(true);
         
         }else if (jComboBox1.getSelectedItem().toString().equals("professionnel")) {
            setVisible(false); 
-           frm_inscriptionP frm_inscriptionP = new frm_inscriptionP();
+           frm_inscriptionP frm_inscriptionP = new frm_inscriptionP(vNom, vPrenom, vDateNaissance, vNumeroBip);
            frm_inscriptionP.setVisible(true);
         
         }else {
@@ -201,7 +204,11 @@ public class frm_inscription extends javax.swing.JFrame {
                 new frm_inscription().setVisible(true);
             }
         });
+        
     }
+
+    
+    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextField DateNaissance;
