@@ -3,7 +3,8 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 package vue;
-
+import DAO.PompierDAO;
+import java.sql.Connection;
 /**
  *
  * @author louane.roussel
@@ -13,10 +14,25 @@ public class frm_inscriptionV2 extends javax.swing.JFrame {
     /**
      * Creates new form frm_inscription
      */
+    String vNom;
+    String vPrenom;
+    String vDateNaissance;
+    String vNumeroBip;
+    boolean vEnAtivite;
+    
     public frm_inscriptionV2() {
         initComponents();
     }
-
+   
+    public frm_inscriptionV2(String vNom, String vPrenom, String vDateNaissance, String vNumeroBip, boolean vEnAtivite) {
+        initComponents();
+       
+       this.vNom = vNom;
+       this.vPrenom = vPrenom;
+       this.vDateNaissance = vDateNaissance;
+       this.vNumeroBip = vNumeroBip;
+        this.vEnAtivite = vEnAtivite;
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -89,9 +105,10 @@ public class frm_inscriptionV2 extends javax.swing.JFrame {
 
     private void validerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_validerActionPerformed
         // TODO add your handling code here:
-        String vnomPro = nomPro.getText();
+        String vNomPro = nomPro.getText();
         String vVille = Ville.getText();
-
+        Connection connection = DAO.InitConnexion.ouvrirConnexion();
+        PompierDAO.inscriptionVolontaire2Bdd(connection,vNom, vPrenom, vDateNaissance, vNumeroBip, vEnAtivite, vNomPro, vVille);
     }//GEN-LAST:event_validerActionPerformed
 
     private void nomProActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nomProActionPerformed
