@@ -4,6 +4,9 @@
  */
 package vue;
 
+import DAO.PompierDAO;
+import java.sql.Connection;
+
 /**
  *
  * @author louane.roussel
@@ -13,10 +16,25 @@ public class frm_inscriptionP extends javax.swing.JFrame {
     /**
      * Creates new form frm_inscription
      */
+    
+    String vNom;
+    String vPrenom;
+    String vDateNaissance;
+    String vNumeroBip;
+    
     public frm_inscriptionP() {
         initComponents();
     }
 
+    public frm_inscriptionP(String vNom, String vPrenom, String vDateNaissance, String vNumeroBip) {
+       initComponents(); 
+       
+       this.vNom = vNom;
+       this.vPrenom = vPrenom;
+       this.vDateNaissance = vDateNaissance;
+       this.vNumeroBip = vNumeroBip;
+    }
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -105,6 +123,8 @@ public class frm_inscriptionP extends javax.swing.JFrame {
         // TODO add your handling code here:
         String vIndiceTraitement = indiceTraitement.getText();
         String vDateOptentionIndice = DateOptentionIndice.getText();
+        Connection connection = DAO.InitConnexion.ouvrirConnexion();
+        PompierDAO.inscriptionProfessionnelBdd(connection, vNom, vPrenom, vDateNaissance, vNumeroBip, vIndiceTraitement, vDateOptentionIndice);
     }//GEN-LAST:event_suivantActionPerformed
 
     /**
