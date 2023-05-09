@@ -125,8 +125,12 @@ public class frm_inscriptionP extends javax.swing.JFrame {
         String vDateOptentionIndice = DateOptentionIndice.getText();
         Connection connection = DAO.InitConnexion.ouvrirConnexion();
         PompierDAO.inscriptionProfessionnelBdd(connection, vNom, vPrenom, vDateNaissance, vNumeroBip, vIndiceTraitement, vDateOptentionIndice);
+        setVisible(false); 
+        frm_validation frm_validation = new frm_validation(vNom, vPrenom, vDateNaissance, vNumeroBip);
+        frm_validation.setVisible(true);
     }//GEN-LAST:event_suivantActionPerformed
-
+   
+                                          
     /**
      * @param args the command line arguments
      */
