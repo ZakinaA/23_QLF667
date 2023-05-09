@@ -121,7 +121,7 @@ public class PompierDAO {
         return true;
     }
     
-    public static boolean inscriptionVolontaire2Bdd(Connection connection, String vNom, String vPrenom, String vDateNaissance, String vNumeroBip,  boolean vEnAtivite, String vNomPro, String vVille){
+    /*public static boolean inscriptionVolontaire2Bdd(Connection connection, String vNom, String vPrenom, String vDateNaissance, String vNumeroBip,  boolean vEnAtivite, String vNomPro, String vVille){
       
         try 
         {
@@ -144,5 +144,5 @@ public class PompierDAO {
         
         
         return true;
-    }
+    }*/
 }
