@@ -103,14 +103,18 @@ public class frm_inscriptionV extends javax.swing.JFrame {
         Connection connection = DAO.InitConnexion.ouvrirConnexion(); 
         
         if (EnAtivite.isSelected()){
-            boolean vEnAtivite = true ;
-            setVisible(false);
-            frm_inscriptionV2 frm_inscriptionV2 = new frm_inscriptionV2();
-            frm_inscriptionV2.setVisible(true);
+            boolean vEnAtivite = true ; 
+           PompierDAO.inscriptionVolontaireBdd(connection, vNom, vPrenom, vDateNaissance, vNumeroBip, vEnAtivite);
+           setVisible(false);
+           frm_validation frm_validation = new frm_validation(vNom, vPrenom, vDateNaissance, vNumeroBip);
+           frm_validation.setVisible(true);
          }else{
            boolean vEnAtivite = false ;
            PompierDAO.inscriptionVolontaireBdd(connection, vNom, vPrenom, vDateNaissance, vNumeroBip, vEnAtivite);
-         }
+            setVisible(false); 
+            frm_validation frm_validation = new frm_validation(vNom, vPrenom, vDateNaissance, vNumeroBip);
+            frm_validation.setVisible(true);
+        }
     }//GEN-LAST:event_suivantActionPerformed
 
     /**
