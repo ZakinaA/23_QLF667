@@ -76,11 +76,23 @@ public class PompierDAO {
         
     }
     
-    public static boolean inscriptionProfessionnelBdd(Connection connection, String vNom, String vPrenom, String vDateNaissance, String vNumeroBip, String vIndiceTraitement, String vDateOptentionIndice){
+    public static boolean inscriptionProfessionnelBdd(Connection connection, String vNom, String vPrenom, String vDateNaissance, String vNumeroBip, String vIndiceTraitement, String vDateOptentionIndice, String vUsername, String vMp){
       
         try 
         {
-            requete = connection.prepareStatement("INSERT INTO `PROFESSIONNEL`(`PROF_INDICETRAITEMENT`, `PROF_DATEOBTENTIONINDICE`, `PROF_NOM`, `PROF_PRENOM`, `PROF_DATENAISSANCE`, `PROF_NUMEROBIP`) VALUES ('?','?','?','?','?','?') ");
+            requete = connection.prepareStatement("INSERT INTO `pompier`(`POM_ID_ASSIGNIE`, `POM_CODE`, `POM_CODE_OCCUPE`, `POM_ID_SOUSLARESPONSABILITE`, `POM_NOM`, `POM_PRENOM`, `POM_DATENAISSANCE`, `POM_NUMEROBIP`, `POM_USERNAME`, `POM_MDP`) VALUES (?,?,?,?,?,?,?,?,?,?)"); 
+            requete.setString(1, "1");
+            requete.setString(2, null);
+            requete.setString(3, null); 
+            requete.setString(4, null);
+            requete.setString(5, vNom);
+            requete.setString(6, vPrenom);
+            requete.setString(7, vDateNaissance);
+            requete.setString(8, vNumeroBip);
+            requete.setString(9, vUsername);
+            requete.setString(10, vMp);
+           
+            requete = connection.prepareStatement("INSERT INTO `professionnel`(`PROF_INDICETRAITEMENT`, `PROF_DATEOBTENTIONINDICE`, `PROF_NOM`, `PROF_PRENOM`, `PROF_DATENAISSANCE`, `PROF_NUMEROBIP`) VALUES (?,?,?,?,?,?) ");
             requete.setString(1, vIndiceTraitement);
             requete.setString(2, vDateOptentionIndice);
             requete.setString(3, vNom);
@@ -89,21 +101,34 @@ public class PompierDAO {
             requete.setString(6, vNumeroBip);
             
             requete.executeUpdate();
-            
+            return true; 
         }   
         catch (SQLException ex) {
-            System.out.println("ERROR SQL");
+           ex.printStackTrace();
+            return false;
         }
         
         
-        return true;
+       
     }
     
-    public static boolean inscriptionVolontaireBdd(Connection connection, String vNom, String vPrenom, String vDateNaissance, String vNumeroBip, boolean vEnAtivite){
+    public static boolean inscriptionVolontaireBdd(Connection connection, String vNom, String vPrenom, String vDateNaissance, String vNumeroBip, boolean vEnAtivite, String vUsername, String vMp){
       
         try 
         {
-            requete = connection.prepareStatement("INSERT INTO `VOLONTAIRE`(`VOL_ENACTIVITE`, `VOL_NOM`, `VOL_PRENOM`, `VOL_DATENAISSANCE`, `VOL_NUMEROBIP`) VALUES ('?','?','?','?','?','?')");
+            requete = connection.prepareStatement("INSERT INTO `pompier`(`POM_ID_ASSIGNIE`, `POM_CODE`, `POM_CODE_OCCUPE`, `POM_ID_SOUSLARESPONSABILITE`, `POM_NOM`, `POM_PRENOM`, `POM_DATENAISSANCE`, `POM_NUMEROBIP`, `POM_USERNAME`, `POM_MDP`) VALUES (?,?,?,?,?,?,?,?,?,?)"); 
+            requete.setString(1, "1");
+            requete.setString(2, null);
+            requete.setString(3, null); 
+            requete.setString(4, null);
+            requete.setString(5, vNom);
+            requete.setString(6, vPrenom);
+            requete.setString(7, vDateNaissance);
+            requete.setString(8, vNumeroBip);
+            requete.setString(9, vUsername);
+            requete.setString(10, vMp);
+            
+            requete = connection.prepareStatement("INSERT INTO `volontaire`(`VOL_ENACTIVITE`, `VOL_NOM`, `VOL_PRENOM`, `VOL_DATENAISSANCE`, `VOL_NUMEROBIP`) VALUES (?,?,?,?,?)");
             requete.setBoolean(1, vEnAtivite);
             requete.setString(2, vNom);
             requete.setString(3, vPrenom);
@@ -111,14 +136,15 @@ public class PompierDAO {
             requete.setString(5, vNumeroBip);
             
             requete.executeUpdate();
-            
+            return true;
         }   
         catch (SQLException ex) {
-            System.out.println("ERROR SQL");
+             ex.printStackTrace();
+            return false;
         }
         
         
-        return true;
+       
     }
     
     /*public static boolean inscriptionVolontaire2Bdd(Connection connection, String vNom, String vPrenom, String vDateNaissance, String vNumeroBip,  boolean vEnAtivite, String vNomPro, String vVille){
