@@ -22,6 +22,7 @@ public class frm_inscriptionP extends javax.swing.JFrame {
     String vDateNaissance;
     String vNumeroBip;
     
+    
     public frm_inscriptionP() {
         initComponents();
     }
@@ -33,6 +34,7 @@ public class frm_inscriptionP extends javax.swing.JFrame {
        this.vPrenom = vPrenom;
        this.vDateNaissance = vDateNaissance;
        this.vNumeroBip = vNumeroBip;
+       
     }
     
     /**
@@ -48,6 +50,8 @@ public class frm_inscriptionP extends javax.swing.JFrame {
         indiceTraitement = new javax.swing.JTextField();
         DateOptentionIndice = new javax.swing.JTextField();
         suivant = new javax.swing.JToggleButton();
+        username = new javax.swing.JTextField();
+        mp = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -74,25 +78,42 @@ public class frm_inscriptionP extends javax.swing.JFrame {
             }
         });
 
+        username.setText("identifiant");
+        username.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                usernameActionPerformed(evt);
+            }
+        });
+
+        mp.setText("mot de passe");
+        mp.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mpActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(0, 115, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(indiceTraitement)
-                    .addComponent(DateOptentionIndice))
-                .addGap(124, 124, 124))
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(165, 165, 165)
                         .addComponent(jLabel1))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(162, 162, 162)
+                        .addGap(158, 158, 158)
                         .addComponent(suivant)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGap(0, 115, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                    .addComponent(mp)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addComponent(indiceTraitement)
+                        .addComponent(DateOptentionIndice)
+                        .addComponent(username)))
+                .addGap(124, 124, 124))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -104,8 +125,12 @@ public class frm_inscriptionP extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addComponent(DateOptentionIndice, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
+                .addComponent(username, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(mp, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 25, Short.MAX_VALUE)
                 .addComponent(suivant)
-                .addContainerGap(130, Short.MAX_VALUE))
+                .addGap(43, 43, 43))
         );
 
         pack();
@@ -123,12 +148,25 @@ public class frm_inscriptionP extends javax.swing.JFrame {
         // TODO add your handling code here:
         String vIndiceTraitement = indiceTraitement.getText();
         String vDateOptentionIndice = DateOptentionIndice.getText();
+        String vUsername = username.getText();
+        String vMp = mp.getText();
         Connection connection = DAO.InitConnexion.ouvrirConnexion();
-        PompierDAO.inscriptionProfessionnelBdd(connection, vNom, vPrenom, vDateNaissance, vNumeroBip, vIndiceTraitement, vDateOptentionIndice);
-        setVisible(false); 
-        frm_validation frm_validation = new frm_validation(vNom, vPrenom, vDateNaissance, vNumeroBip);
-        frm_validation.setVisible(true);
+       
+        boolean valid = PompierDAO.inscriptionProfessionnelBdd(connection, vNom, vPrenom, vDateNaissance, vNumeroBip, vIndiceTraitement, vDateOptentionIndice, vUsername, vMp); 
+        if (valid) {
+            setVisible(false);
+            frm_validation frm_validation = new frm_validation(vNom, vPrenom, vDateNaissance, vNumeroBip);
+            frm_validation.setVisible(true);
+        }
     }//GEN-LAST:event_suivantActionPerformed
+
+    private void mpActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mpActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_mpActionPerformed
+
+    private void usernameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_usernameActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_usernameActionPerformed
    
                                           
     /**
@@ -171,6 +209,8 @@ public class frm_inscriptionP extends javax.swing.JFrame {
     private javax.swing.JTextField DateOptentionIndice;
     private javax.swing.JTextField indiceTraitement;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JTextField mp;
     private javax.swing.JToggleButton suivant;
+    private javax.swing.JTextField username;
     // End of variables declaration//GEN-END:variables
 }
