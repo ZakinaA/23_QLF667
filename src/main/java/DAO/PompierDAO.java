@@ -8,6 +8,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import modeles.Professionnel;
 import modeles.Volontaire;
 
@@ -36,6 +37,8 @@ public class PompierDAO {
              unProfessionnel.setDateObtention(rs.getString("PROF_DATEOBTENTIONINDICE"));
              unProfessionnel.setNom(rs.getString("PROF_NOM"));
              unProfessionnel.setPrenom(rs.getString("PROF_PRENOM"));
+             unProfessionnel.setNumeroBip(rs.getString("PROF_NUMEROBIP"));
+             unProfessionnel.setDateNaissance(rs.getString("PROF_DATENAISSANCE"));
 
          }
          InitConnexion.fermerConnexion(rs);
@@ -71,6 +74,39 @@ public class PompierDAO {
          e.printStackTrace();
      }
      return unVolontaire;
+        
+    }
+    
+     public static ArrayList<Professionnel> getPompierResponsabilite(Connection connection, int idResponsable) {
+        
+        ArrayList<Professionnel> listProfessionnel = new ArrayList<Professionnel>();
+     try
+     {
+         requete = connection.prepareStatement("SELECT * FROM POMPIER WHERE POM_ID_SOUSLARESPONSABILITE=?");
+         requete.setInt(1, idResponsable);
+         
+            ResultSet rs = requete.executeQuery();
+         if (rs.next()){
+             
+            Professionnel unProfessionnel = new Professionnel();
+            
+             unProfessionnel.setId(rs.getInt("POM_ID"));
+             unProfessionnel.setNom(rs.getString("POM_NOM"));
+             unProfessionnel.setPrenom(rs.getString("POM_PRENOM"));
+             unProfessionnel.setNumeroBip(rs.getString("POM_NUMEROBIP"));
+             
+             listProfessionnel.add(unProfessionnel);
+             
+
+         }
+         InitConnexion.fermerConnexion(rs);
+         InitConnexion.fermerConnexion(requete);
+     }
+     catch (SQLException e)
+     {
+         e.printStackTrace();
+     }
+     return listProfessionnel;
         
     }
     

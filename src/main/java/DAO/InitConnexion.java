@@ -28,7 +28,7 @@ public class InitConnexion {
         }     
         try {
             //obtention de la connexion
-            connection= DriverManager.getConnection("jdbc:mariadb://172.20.177.77:3306/23QLF667","ADM_QLF667","mpQlf667");
+            connection= DriverManager.getConnection("jdbc:mariadb://127.0.0.1:3307/23QLF667","root","");
             System.out.println("Connexion OK");
            
         } catch (SQLException e) {

@@ -17,7 +17,7 @@ public abstract class Pompier {
     private String nom;
     private String prenom;
     private String dateNaissance;
-    private int numeroBip;
+    private String numeroBip;
     private Grade grade;
     private ArrayList<Fonction> listeFonction;
     private ArrayList<Caserne> listeCaserne;
@@ -26,7 +26,7 @@ public abstract class Pompier {
     
     public Pompier(){}
     
-    public Pompier(int id, String nom, String prenom, String dateNaissance, int numeroBip){
+    public Pompier(int id, String nom, String prenom, String dateNaissance, String numeroBip){
         this.id = id;
         this.nom = nom;
         this.prenom = prenom;
@@ -68,11 +68,11 @@ public abstract class Pompier {
         this.dateNaissance = dateNaissance;
     }
 
-    public int getNumeroBip() {
+    public String getNumeroBip() {
         return numeroBip;
     }
 
-    public void setNumeroBip(int numeroBip) {
+    public void setNumeroBip(String numeroBip) {
         this.numeroBip = numeroBip;
     }
 
