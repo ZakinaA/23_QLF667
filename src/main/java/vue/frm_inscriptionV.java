@@ -18,7 +18,8 @@ public class frm_inscriptionV extends javax.swing.JFrame {
     String vPrenom;
     String vDateNaissance;
     String vNumeroBip;
-    
+    boolean vEnAtivite;
+   
     public frm_inscriptionV() {
         initComponents();
     }
@@ -43,6 +44,8 @@ public class frm_inscriptionV extends javax.swing.JFrame {
         inscription = new javax.swing.JLabel();
         EnAtivite = new javax.swing.JCheckBox();
         suivant = new javax.swing.JButton();
+        username = new javax.swing.JTextField();
+        mp = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -62,6 +65,15 @@ public class frm_inscriptionV extends javax.swing.JFrame {
             }
         });
 
+        username.setText("identifiant");
+
+        mp.setText("mot de passe");
+        mp.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mpActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -69,26 +81,33 @@ public class frm_inscriptionV extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(159, 159, 159)
-                        .addComponent(suivant))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(149, 149, 149)
-                        .addComponent(EnAtivite, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
                         .addGap(169, 169, 169)
-                        .addComponent(inscription)))
-                .addContainerGap(160, Short.MAX_VALUE))
+                        .addComponent(inscription))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(148, 148, 148)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(EnAtivite, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(username)
+                            .addComponent(mp, javax.swing.GroupLayout.DEFAULT_SIZE, 111, Short.MAX_VALUE)))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(158, 158, 158)
+                        .addComponent(suivant)))
+                .addContainerGap(141, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(28, 28, 28)
                 .addComponent(inscription)
-                .addGap(50, 50, 50)
+                .addGap(18, 18, 18)
                 .addComponent(EnAtivite)
                 .addGap(18, 18, 18)
+                .addComponent(username, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(mp, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 45, Short.MAX_VALUE)
                 .addComponent(suivant)
-                .addContainerGap(146, Short.MAX_VALUE))
+                .addGap(71, 71, 71))
         );
 
         pack();
@@ -100,22 +119,29 @@ public class frm_inscriptionV extends javax.swing.JFrame {
 
     private void suivantActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_suivantActionPerformed
         // TODO add your handling code here:
-        Connection connection = DAO.InitConnexion.ouvrirConnexion(); 
+        String vUsername = username.getText();
+        String vMp = mp.getText(); 
+        Connection connection = DAO.InitConnexion.ouvrirConnexion();
         
         if (EnAtivite.isSelected()){
-            boolean vEnAtivite = true ; 
-           PompierDAO.inscriptionVolontaireBdd(connection, vNom, vPrenom, vDateNaissance, vNumeroBip, vEnAtivite);
-           setVisible(false);
-           frm_validation frm_validation = new frm_validation(vNom, vPrenom, vDateNaissance, vNumeroBip);
-           frm_validation.setVisible(true);
+            vEnAtivite = true; 
+          
          }else{
-           boolean vEnAtivite = false ;
-           PompierDAO.inscriptionVolontaireBdd(connection, vNom, vPrenom, vDateNaissance, vNumeroBip, vEnAtivite);
-            setVisible(false); 
+           vEnAtivite = false;
+          
+        }
+        boolean valid = PompierDAO.inscriptionVolontaireBdd(connection, vNom, vPrenom, vDateNaissance, vNumeroBip, vEnAtivite, vUsername, vMp);
+        if (valid) {
+            setVisible(false);
             frm_validation frm_validation = new frm_validation(vNom, vPrenom, vDateNaissance, vNumeroBip);
             frm_validation.setVisible(true);
         }
+    
     }//GEN-LAST:event_suivantActionPerformed
+
+    private void mpActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mpActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_mpActionPerformed
 
     /**
      * @param args the command line arguments
@@ -156,6 +182,8 @@ public class frm_inscriptionV extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JCheckBox EnAtivite;
     private javax.swing.JLabel inscription;
+    private javax.swing.JTextField mp;
     private javax.swing.JButton suivant;
+    private javax.swing.JTextField username;
     // End of variables declaration//GEN-END:variables
 }
