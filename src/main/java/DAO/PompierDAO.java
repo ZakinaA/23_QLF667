@@ -8,11 +8,13 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import modeles.Professionnel;
 import modeles.Volontaire;
 import modeles.Pompier;
+import modeles.Situation;
 /**
  *
  * @author noa.hervieu
@@ -81,16 +83,17 @@ public class PompierDAO {
         try 
         {
             requete = connection.prepareStatement("INSERT INTO `pompier`(`POM_ID_ASSIGNIE`, `POM_CODE`, `POM_CODE_OCCUPE`, `POM_ID_SOUSLARESPONSABILITE`, `POM_NOM`, `POM_PRENOM`, `POM_DATENAISSANCE`, `POM_NUMEROBIP`, `POM_USERNAME`, `POM_MDP`) VALUES (?,?,?,?,?,?,?,?,?,?)"); 
-            requete.setString(1, "1");
-            requete.setString(2, null);
-            requete.setString(3, null); 
-            requete.setString(4, null);
+             requete.setString(1, "1");
+            requete.setString(2, "SDP");
+            requete.setString(3, "AE");
+            requete.setString(4, "1");
             requete.setString(5, vNom);
             requete.setString(6, vPrenom);
             requete.setString(7, vDateNaissance);
             requete.setString(8, vNumeroBip);
             requete.setString(9, vUsername);
             requete.setString(10, vMp);
+            requete.executeUpdate();
            
             requete = connection.prepareStatement("INSERT INTO `professionnel`(`PROF_INDICETRAITEMENT`, `PROF_DATEOBTENTIONINDICE`, `PROF_NOM`, `PROF_PRENOM`, `PROF_DATENAISSANCE`, `PROF_NUMEROBIP`) VALUES (?,?,?,?,?,?) ");
             requete.setString(1, vIndiceTraitement);
@@ -118,15 +121,16 @@ public class PompierDAO {
         {
             requete = connection.prepareStatement("INSERT INTO `pompier`(`POM_ID_ASSIGNIE`, `POM_CODE`, `POM_CODE_OCCUPE`, `POM_ID_SOUSLARESPONSABILITE`, `POM_NOM`, `POM_PRENOM`, `POM_DATENAISSANCE`, `POM_NUMEROBIP`, `POM_USERNAME`, `POM_MDP`) VALUES (?,?,?,?,?,?,?,?,?,?)"); 
             requete.setString(1, "1");
-            requete.setString(2, null);
-            requete.setString(3, null); 
-            requete.setString(4, null);
+            requete.setString(2, "SDP");
+            requete.setString(3, "AE"); 
+            requete.setString(4, "1");
             requete.setString(5, vNom);
             requete.setString(6, vPrenom);
             requete.setString(7, vDateNaissance);
             requete.setString(8, vNumeroBip);
             requete.setString(9, vUsername);
             requete.setString(10, vMp);
+            requete.executeUpdate();
             
             requete = connection.prepareStatement("INSERT INTO `volontaire`(`VOL_ENACTIVITE`, `VOL_NOM`, `VOL_PRENOM`, `VOL_DATENAISSANCE`, `VOL_NUMEROBIP`) VALUES (?,?,?,?,?)");
             requete.setBoolean(1, vEnAtivite);
@@ -143,6 +147,39 @@ public class PompierDAO {
             return false;
         }
         
+        
+       
+    }
+    
+    public static ArrayList<Situation> getLesSituation(Connection connection){
+        
+        ArrayList<Situation> lesSituations = null;
+      
+        try 
+        {
+            requete = connection.prepareStatement("SELECT * FROM `situation`;"); 
+            
+            ResultSet rs = requete.executeQuery();
+            while (rs.next()){
+                
+                Situation laSituation = new Situation();
+            
+                laSituation.setId(rs.getInt("SIT_ID"));
+                laSituation.setLibelle(rs.getString("SIT_LIBELLE"));
+                
+                lesSituations.add(laSituation);
+
+         }
+         InitConnexion.fermerConnexion(rs);
+         InitConnexion.fermerConnexion(requete);
+            
+            
+        }   
+        catch (SQLException ex) {
+             ex.printStackTrace();
+        }
+        
+        return lesSituations;
         
        
     }
