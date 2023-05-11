@@ -45,7 +45,9 @@ public class frm_inscriptionV extends javax.swing.JFrame {
         EnAtivite = new javax.swing.JCheckBox();
         suivant = new javax.swing.JButton();
         username = new javax.swing.JTextField();
-        mp = new javax.swing.JTextField();
+        mp = new javax.swing.JPasswordField();
+        jLabel1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -65,14 +67,21 @@ public class frm_inscriptionV extends javax.swing.JFrame {
             }
         });
 
-        username.setText("identifiant");
+        username.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                usernameActionPerformed(evt);
+            }
+        });
 
-        mp.setText("mot de passe");
         mp.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 mpActionPerformed(evt);
             }
         });
+
+        jLabel1.setText("identifiant");
+
+        jLabel2.setText("mot de passe");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -84,14 +93,17 @@ public class frm_inscriptionV extends javax.swing.JFrame {
                         .addGap(169, 169, 169)
                         .addComponent(inscription))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(148, 148, 148)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(EnAtivite, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(username)
-                            .addComponent(mp, javax.swing.GroupLayout.DEFAULT_SIZE, 111, Short.MAX_VALUE)))
+                        .addGap(157, 157, 157)
+                        .addComponent(suivant))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(158, 158, 158)
-                        .addComponent(suivant)))
+                        .addGap(148, 148, 148)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel1)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addComponent(EnAtivite, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(username, javax.swing.GroupLayout.DEFAULT_SIZE, 111, Short.MAX_VALUE)
+                                .addComponent(mp))
+                            .addComponent(jLabel2))))
                 .addContainerGap(141, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -102,12 +114,16 @@ public class frm_inscriptionV extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addComponent(EnAtivite)
                 .addGap(18, 18, 18)
+                .addComponent(jLabel1)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(username, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
+                .addComponent(jLabel2)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(mp, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 45, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 28, Short.MAX_VALUE)
                 .addComponent(suivant)
-                .addGap(71, 71, 71))
+                .addGap(44, 44, 44))
         );
 
         pack();
@@ -120,7 +136,7 @@ public class frm_inscriptionV extends javax.swing.JFrame {
     private void suivantActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_suivantActionPerformed
         // TODO add your handling code here:
         String vUsername = username.getText();
-        String vMp = mp.getText(); 
+        String vMp = mp.getPassword().toString();        
         Connection connection = DAO.InitConnexion.ouvrirConnexion();
         
         if (EnAtivite.isSelected()){
@@ -142,6 +158,10 @@ public class frm_inscriptionV extends javax.swing.JFrame {
     private void mpActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mpActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_mpActionPerformed
+
+    private void usernameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_usernameActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_usernameActionPerformed
 
     /**
      * @param args the command line arguments
@@ -182,7 +202,9 @@ public class frm_inscriptionV extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JCheckBox EnAtivite;
     private javax.swing.JLabel inscription;
-    private javax.swing.JTextField mp;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JPasswordField mp;
     private javax.swing.JButton suivant;
     private javax.swing.JTextField username;
     // End of variables declaration//GEN-END:variables
