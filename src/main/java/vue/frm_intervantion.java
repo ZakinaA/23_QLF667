@@ -37,13 +37,13 @@ public class frm_intervantion extends javax.swing.JFrame {
         
         Connection connection = DAO.InitConnexion.ouvrirConnexion();
         
-        ArrayList<Situation> lesSituations = PompierDAO.getLesSituation(connection);
-        DefaultComboBoxModel<String> ComboBoxModel= new DefaultComboBoxModel<String>();
-        for (Situation s: situation){
-            comboBoxModel.aadElement(s.getLibelle());
+        /*ArrayList<Situation> lesSituations = PompierDAO.getLesSituation(connection);
+        DefaultComboBoxModel comboBoxModel = new DefaultComboBoxModel();
+        for (Situation s: lesSituations){
+            comboBoxModel.ad
         }
-        }
-        jComboBox1.setModel(lesSituations);
+        jComboBox1.setModel(comboBoxModel);*/
+    }
 
     private static class DefaultComboBoxModel<T> {
 
@@ -57,7 +57,7 @@ public class frm_intervantion extends javax.swing.JFrame {
         }
     }
         
-    }
+    
 
     /**
      * This method is called from within the constructor to initialize the form.
