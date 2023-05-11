@@ -51,20 +51,22 @@ public class frm_inscriptionP extends javax.swing.JFrame {
         DateOptentionIndice = new javax.swing.JTextField();
         suivant = new javax.swing.JToggleButton();
         username = new javax.swing.JTextField();
-        mp = new javax.swing.JTextField();
+        mp = new javax.swing.JPasswordField();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jLabel1.setText("inscription");
 
-        indiceTraitement.setText("Indice de traitement");
         indiceTraitement.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 indiceTraitementActionPerformed(evt);
             }
         });
 
-        DateOptentionIndice.setText("Date d'optention de l'indice");
         DateOptentionIndice.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 DateOptentionIndiceActionPerformed(evt);
@@ -78,59 +80,71 @@ public class frm_inscriptionP extends javax.swing.JFrame {
             }
         });
 
-        username.setText("identifiant");
         username.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 usernameActionPerformed(evt);
             }
         });
 
-        mp.setText("mot de passe");
-        mp.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                mpActionPerformed(evt);
-            }
-        });
+        jLabel2.setText("IndiceTraitement");
+
+        jLabel3.setText("Date d'optention de l'indice");
+
+        jLabel4.setText("jLabel4");
+
+        jLabel5.setText("mot de passe");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(165, 165, 165)
-                        .addComponent(jLabel1))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(158, 158, 158)
-                        .addComponent(suivant)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(0, 115, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                    .addComponent(mp)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addComponent(indiceTraitement)
-                        .addComponent(DateOptentionIndice)
-                        .addComponent(username)))
-                .addGap(124, 124, 124))
+                .addGap(0, 130, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(jLabel1)
+                        .addGap(170, 170, 170))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel2)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addComponent(jLabel5)
+                                .addComponent(jLabel4)
+                                .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(DateOptentionIndice)
+                                .addComponent(username)
+                                .addComponent(mp)
+                                .addComponent(indiceTraitement)))
+                        .addGap(124, 124, 124))))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(165, 165, 165)
+                .addComponent(suivant)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(34, 34, 34)
+                .addGap(22, 22, 22)
                 .addComponent(jLabel1)
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabel2)
+                .addGap(8, 8, 8)
                 .addComponent(indiceTraitement, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addGap(13, 13, 13)
+                .addComponent(jLabel3)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(DateOptentionIndice, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabel4)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(username, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabel5)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 9, Short.MAX_VALUE)
                 .addComponent(mp, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 25, Short.MAX_VALUE)
+                .addGap(18, 18, 18)
                 .addComponent(suivant)
-                .addGap(43, 43, 43))
+                .addGap(10, 10, 10))
         );
 
         pack();
@@ -149,7 +163,7 @@ public class frm_inscriptionP extends javax.swing.JFrame {
         String vIndiceTraitement = indiceTraitement.getText();
         String vDateOptentionIndice = DateOptentionIndice.getText();
         String vUsername = username.getText();
-        String vMp = mp.getText();
+        String vMp = mp.getPassword().toString();
         Connection connection = DAO.InitConnexion.ouvrirConnexion();
        
         boolean valid = PompierDAO.inscriptionProfessionnelBdd(connection, vNom, vPrenom, vDateNaissance, vNumeroBip, vIndiceTraitement, vDateOptentionIndice, vUsername, vMp); 
@@ -159,10 +173,6 @@ public class frm_inscriptionP extends javax.swing.JFrame {
             frm_validation.setVisible(true);
         }
     }//GEN-LAST:event_suivantActionPerformed
-
-    private void mpActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mpActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_mpActionPerformed
 
     private void usernameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_usernameActionPerformed
         // TODO add your handling code here:
@@ -209,7 +219,11 @@ public class frm_inscriptionP extends javax.swing.JFrame {
     private javax.swing.JTextField DateOptentionIndice;
     private javax.swing.JTextField indiceTraitement;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JTextField mp;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JPasswordField mp;
     private javax.swing.JToggleButton suivant;
     private javax.swing.JTextField username;
     // End of variables declaration//GEN-END:variables
